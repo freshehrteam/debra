@@ -1,0 +1,860 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.eb_diagnosis_detail.v1
+
+concept
+	[at0000]	-- Eb diagnosis detail
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dmitri Wall">
+		["organisation"] = <"Irish Skin Foundation">
+		["email"] = <"dmitri.wall@gmail.com">
+		["date"] = <"2015-06-01">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To enable classification of patients with Epidermolysis Bullosa">
+			use = <"To be utilised to classify subtypes of epidermolysis bullosa.">
+			keywords = <"Epidermolysis Bullosa", "Onion Skin Classification", "Classification", "Diagnosis", "Subtype", "EB">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Ian McNicoll", "Damon Berry">
+	other_details = <
+		["current_contact"] = <"Dmitri Wall">
+		["MD5-CAM-1.0.1"] = <"E54278E4C1DE4B9E760408D28CD27531">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Eb diagnosis detail
+		items cardinality matches {1..*; unordered} matches {
+			CLUSTER[at0001] occurrences matches {0..1} matches {	-- EB_diagnosis_detail
+				items cardinality matches {1..*; unordered} matches {
+					CLUSTER[at0013] occurrences matches {0..1} matches {	-- Major EB type
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- Major EB type
+								value matches {
+									0|[local::at0007], 	-- Epidermolysis bullosa simplex
+									1|[local::at0008], 	-- Junctional epidermolysis bullosa
+									2|[local::at0009], 	-- Dystrophic epidermolysis bullosa
+									3|[local::at0010], 	-- Kindler syndrome
+									4|[local::at0079]  	-- Epidermolysis Bullosa, subtype unclassified
+								}
+							}
+							CLUSTER[at0043] occurrences matches {0..1} matches {	-- Epidermolysis Bullosa Simplex
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Epidermolysis Bullosa Simplex
+										value matches {
+											0|[local::at0048], 	-- Suprabasal Epidermolysis Bullosa Simplex
+											1|[local::at0049], 	-- Basal Epidermolysis Bullosa Simplex
+											2|[local::at0080]  	-- Epidermolysis Bullosa Simplex, subtype unclassified
+										}
+									}
+									CLUSTER[at0045] occurrences matches {0..1} matches {	-- Suprabasal Epidermolysis Bullosa Simplex
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Suprabasal Epidermolysis Bullosa Simplex
+												value matches {
+													0|[local::at0035], 	-- Epidermolysis Bullosa Simplex Superficialis (EBSS)
+													1|[local::at0036], 	-- Acral peeling skin syndrome (APSS)
+													2|[local::at0037], 	-- Acantholytic Epidermolysis Bullosa (EBS-acanth)
+													3|[local::at0038], 	-- Skin fragility syndrome
+													4|[local::at0076]  	-- Suprabasal Epidermolysis Bullosa Simplex Subtype unclassified
+												}
+											}
+											CLUSTER[at0034] occurrences matches {0..1} matches {	-- Skin fragility syndrome
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0039] occurrences matches {0..1} matches {	-- Skin fragility syndrome
+														value matches {
+															0|[local::at0040], 	-- Desmoplakin deficiency (EBS-desmoplakin; skin fragility-woolly hair syndrome)
+															1|[local::at0041], 	-- Plakoglobin deficiency (EBS-plakoglobin;skin fragility-plakoglobin deficiency)
+															2|[local::at0042], 	-- "Plakophilin deficiency (EBS-plakophilin; skin
+															3|[local::at0077]  	-- Skin fragility syndrome, subtype unclassified
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0046] occurrences matches {0..1} matches {	-- Basal Epidermolysis Bullosa Simplex
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0044] occurrences matches {0..1} matches {	-- Basal Epidermolysis Bullosa Simplex
+												value matches {
+													0|[local::at0050], 	-- Epidermolysis Bullosa Simplex, localized (EBS-loc)
+													1|[local::at0051], 	-- Epidermolysis Bullosa Simplex with mottled pigmentation (EBS-MP)
+													2|[local::at0052], 	-- Epidermolysis Bullosa Simplex-Ogna (EBS-Og)
+													3|[local::at0053], 	-- Epidermolysis Bullosa Simplex, generalized severe (EBS-gen sev)
+													4|[local::at0054], 	-- Epidermolysis Bullosa Simplex, generalized intermediate (EBS-gen intermed)
+													5|[local::at0055], 	-- Epidermolysis Bullosa Simplex, migratory circinate (EBS-migr)
+													6|[local::at0056], 	-- Epidermolysis Bullosa Simplex, autosomal recessive K14 (EBS-AR K14)
+													7|[local::at0057], 	-- Epidermolysis Bullosa Simplex with muscular dystrophy (EBS-MD)
+													8|[local::at0058], 	-- Epidermolysis Bullosa Simplex with pyloric atresia (EBS-PA)
+													9|[local::at0059], 	-- Epidermolysis Bullosa Simplex, autosomal recessive-BP230 deficiency (EBS-AR BP230)
+													10|[local::at0060], 	-- Epidermolysis Bullosa Simplex, autosomal recessive-exophilin 5 deficiency (EBS-AR exophilin 5)
+													11|[local::at0078]  	-- Basal Epidermolysis Bullosa Simplex, subtype unclassified
+												}
+											}
+										}
+									}
+								}
+							}
+							CLUSTER[at0032] occurrences matches {0..1} matches {	-- Junctional Epidermolysis Bullosa
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0063] occurrences matches {0..1} matches {	-- Junctional Epidermolysis Bullosa
+										value matches {
+											0|[local::at0064], 	-- Junctional Epidermolysis Bullosa generalized
+											1|[local::at0065], 	-- Junctional Epidermolysis Bullosa localized
+											2|[local::at0081]  	-- Junctional Epidermolysis Bullosa, subtype unclassified
+										}
+									}
+									CLUSTER[at0062] occurrences matches {0..1} matches {	-- Junctional Epidermolysis Bullosa generalized
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0066] occurrences matches {0..1} matches {	-- Junctional Epidermolysis Bullosa generalized
+												value matches {
+													0|[local::at0067], 	-- Junctional Epidermolysis Bullosa, generalized severe (JEB-gen sev)
+													1|[local::at0068], 	-- Junctional Epidermolysis Bullosa, generalized intermediate (JEB-gen intermed)
+													2|[local::at0069], 	-- Junctional Epidermolysis Bullosa with pyloric atresia (JEB-PA)
+													3|[local::at0070], 	-- Junctional Epidermolysis Bullosa, late onset (JEB-LO)
+													4|[local::at0071], 	-- Junctional Epidermolysis Bullosa with respiratory and renal involvement (JEB-RR)
+													5|[local::at0083]  	-- Junctional Epidermolysis Bullosa generalized, subtype unclassified
+												}
+											}
+										}
+									}
+									CLUSTER[at0061] occurrences matches {0..1} matches {	-- Junctional Epidermolysis Bullosa localized
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0072] occurrences matches {0..1} matches {	-- Junctional Epidermolysis Bullosa localized
+												value matches {
+													0|[local::at0073], 	-- Junctional Epidermolysis Bullosa, localized (JEB-loc)
+													1|[local::at0074], 	-- Junctional Epidermolysis Bullosa, inversa (JEB-inv; JEB-I)
+													2|[local::at0075], 	-- Junctional Epidermolysis Bullosa-LOC syndrome
+													3|[local::at0084]  	-- Junctional Epidermolysis Bullosa localized, subtype unclassified
+												}
+											}
+										}
+									}
+								}
+							}
+							CLUSTER[at0031] occurrences matches {0..1} matches {	-- Dystrophic Epidermolysis Bullosa
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0087] occurrences matches {0..1} matches {	-- Dystrophic Epidermolysis Bullosa
+										value matches {
+											0|[local::at0088], 	-- Dominant Dystrophic Epidermolysis Bullosa
+											1|[local::at0089], 	-- Recessive Dystrophic Epidermolysis Bullosa
+											2|[local::at0090]  	-- Dystrophic Epidermolysis Bullosa, subtype unclassified
+										}
+									}
+									CLUSTER[at0085] occurrences matches {0..1} matches {	-- Dominant Dystrophic Epidermolysis Bullosa
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0091] occurrences matches {0..1} matches {	-- Dominant Dystrophic Epidermolysis Bullosa
+												value matches {
+													0|[local::at0093], 	-- Dominant Dystrophic Epidermolysis Bullosa, generalized (DDEB-gen)
+													1|[local::at0094], 	-- Dominant Dystrophic Epidermolysis Bullosa, acral (DDEB-ac)
+													2|[local::at0095], 	-- Dominant Dystrophic Epidermolysis Bullosa, pretibial (DDEB-pt)
+													3|[local::at0096], 	-- Dominant Dystrophic Epidermolysis Bullosa, pruriginosa (DDEB-pr)
+													4|[local::at0097], 	-- Dominant Dystrophic Epidermolysis Bullosa, nails only (DDEB-na)
+													5|[local::at0098], 	-- Dominant Dystrophic Epidermolysis Bullosa, bullous dermolysis of the newborn (DDEB-BDN)
+													6|[local::at0107]  	-- Dominant Dystrophic Epidermolysis Bullosa, subtype unclassified
+												}
+											}
+										}
+									}
+									CLUSTER[at0086] occurrences matches {0..1} matches {	-- Recessive Dystrophic Epidermolysis Bullosa
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0092] occurrences matches {0..1} matches {	-- Recessive Dystrophic Epidermolysis Bullosa
+												value matches {
+													0|[local::at0099], 	-- Recessive Dystrophic Epidermolysis Bullosa, generalized severe (RDEB-gen sev)
+													1|[local::at0100], 	-- Recessive Dystrophic Epidermolysis Bullosa, generalized intermediate (RDEB-gen intermed)
+													2|[local::at0101], 	-- Recessive Dystrophic Epidermolysis Bullosa, inversa (RDEB-inv; RDEB-I)
+													3|[local::at0102], 	-- Recessive Dystrophic Epidermolysis Bullosa, localized (RDEB-loc)
+													4|[local::at0103], 	-- Recessive Dystrophic Epidermolysis Bullosa, pretibial (RDEB-pt)
+													5|[local::at0104], 	-- Recessive Dystrophic Epidermolysis Bullosa, pruriginosa (RDEB-pr)
+													6|[local::at0105], 	-- Recessive Dystrophic Epidermolysis Bullosa, centripetalis (RDEB-ce)
+													7|[local::at0106], 	-- Recessive Dystrophic Epidermolysis Bullosa, bullous dermolysis of the newborn (RDEB-BDN)
+													8|[local::at0108]  	-- Recessive Dystrophic Epidermolysis Bullosa, subtype unclassified
+												}
+											}
+										}
+									}
+								}
+							}
+							ELEMENT[at0024] occurrences matches {0..1} matches {	-- Kindler syndrome
+								value matches {
+									0|[local::at0109], 	-- Kindler syndrome
+									1|[local::at0110]  	-- Kindler syndrome, subtype unclassified
+								}
+							}
+						}
+					}
+					allow_archetype ELEMENT[at0116] occurrences matches {0..*} matches {	-- Mode of transmission
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0117] occurrences matches {0..1} matches {	-- Ultrastructural site
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0118] occurrences matches {0..1} matches {	-- EB Protein involved
+						value matches {
+							0|[local::at0119], 	-- Transglutaminase 5
+							1|[local::at0120], 	-- Desmoplakin (or its C-terminus)
+							2|[local::at0121], 	-- Plakoglobin
+							3|[local::at0122], 	-- Plakophilin 1
+							4|[local::at0123], 	-- K5
+							5|[local::at0124], 	-- K14
+							6|[local::at0125], 	-- Plectin
+							7|[local::at0126], 	-- Integrin α6β4
+							8|[local::at0127], 	-- Bullous pemphigoid antigen-1 (BP230)
+							9|[local::at0128], 	-- Exophilin 5 (Slac2-b)
+							10|[local::at0129], 	-- Laminin-332
+							11|[local::at0130], 	-- Collagen XVII
+							12|[local::at0131], 	-- Integrin α6β4
+							13|[local::at0132], 	-- Integrin a3 subunit
+							14|[local::at0133], 	-- Laminin-332, isoform a3 chain
+							15|[local::at0134], 	-- Collagen VII
+							16|[local::at0135], 	-- Fermitin family homolog (kindlin-1)
+							17|[local::at0136], 	-- Unknown
+							18|[local::at0137]  	-- Unclassified
+						}
+					}
+					ELEMENT[at0138] occurrences matches {0..*} matches {	-- EB Protein staining pattern
+						value matches {
+							0|[local::at0139], 	-- Normal
+							1|[local::at0140], 	-- Reduced
+							2|[local::at0141], 	-- Markedly Reduced
+							3|[local::at0142], 	-- Absent
+							4|[local::at0143], 	-- Granular staining within basal keratinocytes and reduced/absent staining along the DEJ during active disease; normal DEJ staining when older and if becomes clinically inactive
+							5|[local::at0144]  	-- Unknown
+						}
+					}
+					ELEMENT[at0145] occurrences matches {0..1} matches {	-- EB gene involved
+						value matches {
+							0|[local::at0146], 	-- TGM5
+							1|[local::at0147], 	-- DSP
+							2|[local::at0148], 	-- JUP
+							3|[local::at0149], 	-- PKP1
+							4|[local::at0150], 	-- KRT5
+							5|[local::at0151], 	-- KRT14
+							6|[local::at0152], 	-- PLEC
+							7|[local::at0153], 	-- EXPH5
+							8|[local::at0154], 	-- LAMA3
+							9|[local::at0155], 	-- LAMB3
+							10|[local::at0156], 	-- LAMC2
+							11|[local::at0157], 	-- COL17A1
+							12|[local::at0158], 	-- ITGB4
+							13|[local::at0159], 	-- ITGA6
+							14|[local::at0160], 	-- ITGA3
+							15|[local::at0161], 	-- LAMA3A
+							16|[local::at0162], 	-- COL7A1
+							17|[local::at0163], 	-- FERMT1 (KIND1)
+							18|[local::at0164], 	-- Unknown
+							19|[local::at0165]  	-- Unnamed
+						}
+					}
+					ELEMENT[at0166] occurrences matches {0..*} matches {	-- New element
+						value matches {
+							0|[local::at0167], 	-- Missense (MS)
+							1|[local::at0168], 	-- Deletion (del)
+							2|[local::at0169], 	-- Nonsense (NS)
+							3|[local::at0170], 	-- Insertion or Deletion (Indel)
+							4|[local::at0171], 	-- Splice (Spl)
+							5|[local::at0172]  	-- Insertion (Ins)
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Eb diagnosis detail">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"EB_diagnosis_detail">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Major EB type">
+					description = <"They major EB type of the patient">
+				>
+				["at0007"] = <
+					text = <"Epidermolysis bullosa simplex">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Junctional epidermolysis bullosa">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Dystrophic epidermolysis bullosa">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Kindler syndrome">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Major EB type">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Suprabasal Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Kindler syndrome">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Junctional Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Skin fragility syndrome">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Epidermolysis Bullosa Simplex Superficialis (EBSS)">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Acral peeling skin syndrome (APSS)">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Acantholytic Epidermolysis Bullosa (EBS-acanth)">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Skin fragility syndrome">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Skin fragility syndrome">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Desmoplakin deficiency (EBS-desmoplakin; skin fragility-woolly hair syndrome)">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Plakoglobin deficiency (EBS-plakoglobin;skin fragility-plakoglobin deficiency)">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"\"Plakophilin deficiency (EBS-plakophilin; skin
+fragility-ectodermal dysplasia syndrome)\"">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Basal Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Suprabasal Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Basal Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Suprabasal Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Basal Epidermolysis Bullosa Simplex">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Epidermolysis Bullosa Simplex, localized (EBS-loc)">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Epidermolysis Bullosa Simplex with mottled pigmentation (EBS-MP)">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Epidermolysis Bullosa Simplex-Ogna (EBS-Og)">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Epidermolysis Bullosa Simplex, generalized severe (EBS-gen sev)">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Epidermolysis Bullosa Simplex, generalized intermediate (EBS-gen intermed)">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Epidermolysis Bullosa Simplex, migratory circinate (EBS-migr)">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Epidermolysis Bullosa Simplex, autosomal recessive K14 (EBS-AR K14)">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Epidermolysis Bullosa Simplex with muscular dystrophy (EBS-MD)">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Epidermolysis Bullosa Simplex with pyloric atresia (EBS-PA)">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Epidermolysis Bullosa Simplex, autosomal recessive-BP230 deficiency (EBS-AR BP230)">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Epidermolysis Bullosa Simplex, autosomal recessive-exophilin 5 deficiency (EBS-AR exophilin 5)">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Junctional Epidermolysis Bullosa localized">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Junctional Epidermolysis Bullosa generalized">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Junctional Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Junctional Epidermolysis Bullosa generalized">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Junctional Epidermolysis Bullosa localized">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Junctional Epidermolysis Bullosa generalized">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Junctional Epidermolysis Bullosa, generalized severe (JEB-gen sev)">
+					description = <"*">
+				>
+				["at0068"] = <
+					text = <"Junctional Epidermolysis Bullosa, generalized intermediate (JEB-gen intermed)">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Junctional Epidermolysis Bullosa with pyloric atresia (JEB-PA)">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"Junctional Epidermolysis Bullosa, late onset (JEB-LO)">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Junctional Epidermolysis Bullosa with respiratory and renal involvement (JEB-RR)">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Junctional Epidermolysis Bullosa localized">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Junctional Epidermolysis Bullosa, localized (JEB-loc)">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"Junctional Epidermolysis Bullosa, inversa (JEB-inv; JEB-I)">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Junctional Epidermolysis Bullosa-LOC syndrome">
+					description = <"*">
+				>
+				["at0076"] = <
+					text = <"Suprabasal Epidermolysis Bullosa Simplex Subtype unclassified">
+					description = <"*">
+				>
+				["at0077"] = <
+					text = <"Skin fragility syndrome, subtype unclassified">
+					description = <"*">
+				>
+				["at0078"] = <
+					text = <"Basal Epidermolysis Bullosa Simplex, subtype unclassified">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"Epidermolysis Bullosa, subtype unclassified">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"Epidermolysis Bullosa Simplex, subtype unclassified">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Junctional Epidermolysis Bullosa, subtype unclassified">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Junctional Epidermolysis Bullosa generalized, subtype unclassified">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"Junctional Epidermolysis Bullosa localized, subtype unclassified">
+					description = <"*">
+				>
+				["at0085"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0086"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0087"] = <
+					text = <"Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0088"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"Dystrophic Epidermolysis Bullosa, subtype unclassified">
+					description = <"*">
+				>
+				["at0091"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa">
+					description = <"*">
+				>
+				["at0093"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, generalized (DDEB-gen)">
+					description = <"*">
+				>
+				["at0094"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, acral (DDEB-ac)">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, pretibial (DDEB-pt)">
+					description = <"*">
+				>
+				["at0096"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, pruriginosa (DDEB-pr)">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, nails only (DDEB-na)">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, bullous dermolysis of the newborn (DDEB-BDN)">
+					description = <"*">
+				>
+				["at0099"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, generalized severe (RDEB-gen sev)">
+					description = <"*">
+				>
+				["at0100"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, generalized intermediate (RDEB-gen intermed)">
+					description = <"*">
+				>
+				["at0101"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, inversa (RDEB-inv; RDEB-I)">
+					description = <"*">
+				>
+				["at0102"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, localized (RDEB-loc)">
+					description = <"*">
+				>
+				["at0103"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, pretibial (RDEB-pt)">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, pruriginosa (RDEB-pr)">
+					description = <"*">
+				>
+				["at0105"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, centripetalis (RDEB-ce)">
+					description = <"*">
+				>
+				["at0106"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, bullous dermolysis of the newborn (RDEB-BDN)">
+					description = <"*">
+				>
+				["at0107"] = <
+					text = <"Dominant Dystrophic Epidermolysis Bullosa, subtype unclassified">
+					description = <"*">
+				>
+				["at0108"] = <
+					text = <"Recessive Dystrophic Epidermolysis Bullosa, subtype unclassified">
+					description = <"*">
+				>
+				["at0109"] = <
+					text = <"Kindler syndrome">
+					description = <"*">
+				>
+				["at0110"] = <
+					text = <"Kindler syndrome, subtype unclassified">
+					description = <"*">
+				>
+				["at0116"] = <
+					text = <"Mode of transmission">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Ultrastructural site">
+					description = <"*">
+				>
+				["at0118"] = <
+					text = <"EB Protein involved">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"Transglutaminase 5">
+					description = <"*">
+				>
+				["at0120"] = <
+					text = <"Desmoplakin (or its C-terminus)">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Plakoglobin">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Plakophilin 1">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"K5">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"K14">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Plectin">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Integrin α6β4">
+					description = <"*">
+				>
+				["at0127"] = <
+					text = <"Bullous pemphigoid antigen-1 (BP230)">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Exophilin 5 (Slac2-b)">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"Laminin-332">
+					description = <"*">
+				>
+				["at0130"] = <
+					text = <"Collagen XVII">
+					description = <"*">
+				>
+				["at0131"] = <
+					text = <"Integrin α6β4">
+					description = <"*">
+				>
+				["at0132"] = <
+					text = <"Integrin a3 subunit">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Laminin-332, isoform a3 chain">
+					description = <"*">
+				>
+				["at0134"] = <
+					text = <"Collagen VII">
+					description = <"*">
+				>
+				["at0135"] = <
+					text = <"Fermitin family homolog (kindlin-1)">
+					description = <"*">
+				>
+				["at0136"] = <
+					text = <"Unknown">
+					description = <"*">
+				>
+				["at0137"] = <
+					text = <"Unclassified">
+					description = <"*">
+				>
+				["at0138"] = <
+					text = <"EB Protein staining pattern">
+					description = <"*">
+				>
+				["at0139"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0140"] = <
+					text = <"Reduced">
+					description = <"*">
+				>
+				["at0141"] = <
+					text = <"Markedly Reduced">
+					description = <"*">
+				>
+				["at0142"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0143"] = <
+					text = <"Granular staining within basal keratinocytes and reduced/absent staining along the DEJ during active disease; normal DEJ staining when older and if becomes clinically inactive">
+					description = <"*">
+				>
+				["at0144"] = <
+					text = <"Unknown">
+					description = <"*">
+				>
+				["at0145"] = <
+					text = <"EB gene involved">
+					description = <"*">
+				>
+				["at0146"] = <
+					text = <"TGM5">
+					description = <"*">
+				>
+				["at0147"] = <
+					text = <"DSP">
+					description = <"*">
+				>
+				["at0148"] = <
+					text = <"JUP">
+					description = <"*">
+				>
+				["at0149"] = <
+					text = <"PKP1">
+					description = <"*">
+				>
+				["at0150"] = <
+					text = <"KRT5">
+					description = <"*">
+				>
+				["at0151"] = <
+					text = <"KRT14">
+					description = <"*">
+				>
+				["at0152"] = <
+					text = <"PLEC">
+					description = <"*">
+				>
+				["at0153"] = <
+					text = <"EXPH5">
+					description = <"*">
+				>
+				["at0154"] = <
+					text = <"LAMA3">
+					description = <"*">
+				>
+				["at0155"] = <
+					text = <"LAMB3">
+					description = <"*">
+				>
+				["at0156"] = <
+					text = <"LAMC2">
+					description = <"*">
+				>
+				["at0157"] = <
+					text = <"COL17A1">
+					description = <"*">
+				>
+				["at0158"] = <
+					text = <"ITGB4">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"ITGA6">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"ITGA3">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"LAMA3A">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"COL7A1">
+					description = <"*">
+				>
+				["at0163"] = <
+					text = <"FERMT1 (KIND1)">
+					description = <"*">
+				>
+				["at0164"] = <
+					text = <"Unknown">
+					description = <"*">
+				>
+				["at0165"] = <
+					text = <"Unnamed">
+					description = <"*">
+				>
+				["at0166"] = <
+					text = <"New element">
+					description = <"*">
+				>
+				["at0167"] = <
+					text = <"Missense (MS)">
+					description = <"*">
+				>
+				["at0168"] = <
+					text = <"Deletion (del)">
+					description = <"*">
+				>
+				["at0169"] = <
+					text = <"Nonsense (NS)">
+					description = <"*">
+				>
+				["at0170"] = <
+					text = <"Insertion or Deletion (Indel)">
+					description = <"*">
+				>
+				["at0171"] = <
+					text = <"Splice (Spl)">
+					description = <"*">
+				>
+				["at0172"] = <
+					text = <"Insertion (Ins)">
+					description = <"*">
+				>
+			>
+		>
+	>
