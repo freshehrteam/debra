@@ -1,0 +1,82 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.registry_parent.v0
+
+concept
+	[at0000]	-- Registry (PARENT)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Hildegard Franke">
+		["email"] = <"hildi@freshehr.com">
+		["organisation"] = <"freshEHR Clinical Informatics Ltd.">
+		["date"] = <"2016-12-09">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For the recording of administrative details for PARENT registry.">
+			use = <"Use to record administrative PARENT registry details.">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
+		["licence"] = <"CC BY-SA 3.0">
+		["MD5-CAM-1.0.1"] = <"DBC52D6723A70CF48A8EBEDA32DDE704">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Registry (PARENT)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Registry name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Date registered
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {	-- Patient consent preferences
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.registry_consent_parent(-[a-zA-Z0-9_]+)*\.v0/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Registry (PARENT)">
+					description = <"Administrative details for PARENT registry.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Registry name">
+					description = <"The name of the registry.">
+				>
+				["at0003"] = <
+					text = <"Date registered">
+					description = <"Date when the patient was registered.">
+				>
+				["at0004"] = <
+					text = <"Patient consent preferences">
+					description = <"Slot for the capture of patient consent preferences.">
+				>
+			>
+		>
+	>
