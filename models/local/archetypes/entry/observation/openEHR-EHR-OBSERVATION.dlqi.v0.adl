@@ -1,0 +1,425 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.dlqi.v0
+
+concept
+	[at0000]	-- Dermatology Life Quality Index
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Hildegard Franke">
+		["email"] = <"hildi@freshehr.com">
+		["organisation"] = <"freshEHR Clinical Informatics Ltd.">
+		["date"] = <"2016-12-27">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For the recording of the details of the Dermatology Life Quality Index (DLQI) used to assess the impact of dermatological conditions on the patient's life.">
+			use = <"Use to record the individual items and the total score of the Dermatology Life Quality Index (DLQI).">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
+		["licence"] = <"CC-BY-SA 3.0">
+		["MD5-CAM-1.0.1"] = <"7772A700FA0E3FA9A77E0C7B8D88C534">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Dermatology Life Quality Index
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..1} matches {	-- Point in time
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Itchiness, soreness, pain or stingyness
+										value matches {
+											0|[local::at0005], 	-- Not at all
+											1|[local::at0006], 	-- A little
+											2|[local::at0007], 	-- A lot
+											3|[local::at0008]  	-- Very much
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Embarrassment or self-consciousness
+										value matches {
+											0|[local::at0010], 	-- Not at all
+											1|[local::at0011], 	-- A little
+											2|[local::at0012], 	-- A lot
+											3|[local::at0013]  	-- Very much
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Interference with shopping, housework or gardening
+										value matches {
+											0|[local::at0015], 	-- Not at all or not relevant
+											1|[local::at0016], 	-- A little
+											2|[local::at0017], 	-- A lot
+											3|[local::at0018]  	-- Very much
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Influence on clothes
+										value matches {
+											0|[local::at0020], 	-- Not at all or not relevant
+											1|[local::at0021], 	-- A little
+											2|[local::at0022], 	-- A lot
+											3|[local::at0023]  	-- Very much
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Effect on social or leisure activities
+										value matches {
+											0|[local::at0025], 	-- Not at all or not relevant
+											1|[local::at0026], 	-- A little
+											2|[local::at0027], 	-- A lot
+											3|[local::at0028]  	-- Very much
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Impact on sport
+										value matches {
+											0|[local::at0030], 	-- Not at all or not relevant
+											1|[local::at0031], 	-- A little
+											2|[local::at0032], 	-- A lot
+											3|[local::at0033]  	-- Very much
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Prevented from working or studying
+										value matches {
+											0|[local::at0035], 	-- No
+											3|[local::at0036]  	-- Yes
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Problem at work or studying
+										value matches {
+											0|[local::at0038], 	-- Not at all
+											1|[local::at0039], 	-- A little
+											2|[local::at0040]  	-- A lot
+										}
+									}
+									ELEMENT[at0041] occurrences matches {0..1} matches {	-- Problems with partner or any close friends or relatives
+										value matches {
+											0|[local::at0042], 	-- Not at all or not relevant
+											1|[local::at0043], 	-- A little
+											2|[local::at0044], 	-- A lot
+											3|[local::at0045]  	-- Very much
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Sexual difficulties
+										value matches {
+											0|[local::at0047], 	-- Not at all or not relevant
+											1|[local::at0048], 	-- A little
+											2|[local::at0049], 	-- A lot
+											3|[local::at0050]  	-- Very much
+										}
+									}
+									ELEMENT[at0051] occurrences matches {0..1} matches {	-- Problem caused by treatment
+										value matches {
+											0|[local::at0052], 	-- Not at all or not relevant
+											1|[local::at0053], 	-- A little
+											2|[local::at0054], 	-- A lot
+											3|[local::at0055]  	-- Very much
+										}
+									}
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..30|}
+											}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0057] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0058] occurrences matches {0..*} matches {	-- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0059] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0060] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dermatology Life Quality Index">
+					description = <"The Dermatology Life Quality Index (DLQI).">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Point in time">
+					description = <"A specific date and/or time which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Itchiness, soreness, pain or stingyness">
+					description = <"Assessment of how itchy, sore, painful or stinging the patient's skin has been.">
+					comment = <"Questionnaire question: How itchy, sore, painful or stinging has your skin been?">
+				>
+				["at0005"] = <
+					text = <"Not at all">
+					description = <"The patient's skin has not been itchy, sore, painful or stinging at all.">
+				>
+				["at0006"] = <
+					text = <"A little">
+					description = <"The patient's skin has been a little itchy, sore, painful or stinging.">
+				>
+				["at0007"] = <
+					text = <"A lot">
+					description = <"The patient's skin has been a lot itchy, sore, painful or stinging.">
+				>
+				["at0008"] = <
+					text = <"Very much">
+					description = <"The patient's skin has been very much itchy, sore, painful or stinging.">
+				>
+				["at0009"] = <
+					text = <"Embarrassment or self-consciousness">
+					description = <"Assessment of how embarrassed or self-conscious the patient has been because of his or her skin.">
+					comment = <"Questionnaire question: How embarrassed or self-concious have you been because of your skin?">
+				>
+				["at0010"] = <
+					text = <"Not at all">
+					description = <"The patient has not been at all embarrassed or self-conscious because of his or her skin.">
+				>
+				["at0011"] = <
+					text = <"A little">
+					description = <"The patient has been a little embarrassed or self-conscious because of his or her skin.">
+				>
+				["at0012"] = <
+					text = <"A lot">
+					description = <"The patient has been a lot embarrassed or self-conscious because of his or her skin.">
+				>
+				["at0013"] = <
+					text = <"Very much">
+					description = <"The patient has been very much embarrassed or self-conscious because of his or her skin.">
+				>
+				["at0014"] = <
+					text = <"Interference with shopping, housework or gardening">
+					description = <"Assessment of how much skin has interfered with patient's ability to go shopping or looking after home or garden.">
+					comment = <"Questionnaire question: How much has your skin interfered with you going shopping or looking after your home or garden?">
+				>
+				["at0015"] = <
+					text = <"Not at all or not relevant">
+					description = <"The patient's skin has not at all interfered with his or her going shopping or looking after his or her home or garden or the question is not relevant.">
+				>
+				["at0016"] = <
+					text = <"A little">
+					description = <"The patient's skin has interfered a little with his or her going shopping or looking after his or her home or garden.">
+				>
+				["at0017"] = <
+					text = <"A lot">
+					description = <"The patient's skin has interfered a lot with his or her going shopping or looking after his or her home or garden.">
+				>
+				["at0018"] = <
+					text = <"Very much">
+					description = <"The patient's skin has interfered very much with his or her going shopping or looking after his or her home or garden.">
+				>
+				["at0019"] = <
+					text = <"Influence on clothes">
+					description = <"Assessment of how much skin has influenced clothes worn by patient.">
+					comment = <"Questionnaire question: How much has the skin influenced the clothes you wear?">
+				>
+				["at0020"] = <
+					text = <"Not at all or not relevant">
+					description = <"The patient's skin has not at all influenced the clothes worn by the patient or the question is not relevant.">
+				>
+				["at0021"] = <
+					text = <"A little">
+					description = <"The patient's skin has influenced a little the clothes worn by the patient.">
+				>
+				["at0022"] = <
+					text = <"A lot">
+					description = <"The patient's skin has influenced a lot the clothes worn by the patient.">
+				>
+				["at0023"] = <
+					text = <"Very much">
+					description = <"The patient's skin has influenced very much the clothes worn by the patient.">
+				>
+				["at0024"] = <
+					text = <"Effect on social or leisure activities">
+					description = <"Assessment of how much skin has affected patient's social or leisure activities.">
+					comment = <"Questionnaire question: How much has your skin affected social or leisure activities?">
+				>
+				["at0025"] = <
+					text = <"Not at all or not relevant">
+					description = <"The patient's skin has not at all affected the patient's social or leisure activities or the question is not relevant.">
+				>
+				["at0026"] = <
+					text = <"A little">
+					description = <"The patient's skin has affected a little the patient's social or leisure activities .">
+				>
+				["at0027"] = <
+					text = <"A lot">
+					description = <"The patient's skin has affected a lot the patient's social or leisure activities .">
+				>
+				["at0028"] = <
+					text = <"Very much">
+					description = <"The patient's skin has affected very much the patient's social or leisure activities .">
+				>
+				["at0029"] = <
+					text = <"Impact on sport">
+					description = <"Assessment of how much skin has made it difficult for patient to do any sport.">
+					comment = <"Questionnaire question: How much has your skin made it difficult for you to do any sport?">
+				>
+				["at0030"] = <
+					text = <"Not at all or not relevant">
+					description = <"The patient's skin has not made it difficult at all to do sports or the question is not relevant.">
+				>
+				["at0031"] = <
+					text = <"A little">
+					description = <"The patient's skin has made it a little difficult at all to do sports.">
+				>
+				["at0032"] = <
+					text = <"A lot">
+					description = <"The patient's skin has made it a lot difficult at all to do sports.">
+				>
+				["at0033"] = <
+					text = <"Very much">
+					description = <"The patient's skin has made it very much  difficult at all to do sports.">
+				>
+				["at0034"] = <
+					text = <"Prevented from working or studying">
+					description = <"Statement of whether skin has prevented patient from working or studying.">
+					comment = <"Questionnaire question: Has your skin prevented you from working or studying?">
+				>
+				["at0035"] = <
+					text = <"No">
+					description = <"Skin has not prevented patient from working or studying.">
+				>
+				["at0036"] = <
+					text = <"Yes">
+					description = <"Skin has prevented patient from working or studying.">
+				>
+				["at0037"] = <
+					text = <"Problem at work or studying">
+					description = <"If skin has not prevented patient from working or studying, assessment of how much skin has been a problem for patient at work or studying.">
+					comment = <"Questionnaire question: If 'No' how much has your skin been a problem at work or studying?">
+				>
+				["at0038"] = <
+					text = <"Not at all">
+					description = <"The patient's skin has not at all been a problem at work or studying.">
+				>
+				["at0039"] = <
+					text = <"A little">
+					description = <"The patient's skin has been a problem a little at work or studying.">
+				>
+				["at0040"] = <
+					text = <"A lot">
+					description = <"The patient's skin has been a problem a lot at work or studying.">
+				>
+				["at0041"] = <
+					text = <"Problems with partner or any close friends or relatives">
+					description = <"Assessment of how much skin has created problems for patient with partner or any close friends or relatives.">
+					comment = <"Questionnaire question: How much has your skin created problems with your partner or any of your close friends or relatives?">
+				>
+				["at0042"] = <
+					text = <"Not at all or not relevant">
+					description = <"The patient's skin has not created a problem at all with partner or any close friends or relatives or the question is not relevant.">
+				>
+				["at0043"] = <
+					text = <"A little">
+					description = <"The patient's skin has created a little of a problem with partner or any close friends or relatives.">
+				>
+				["at0044"] = <
+					text = <"A lot">
+					description = <"The patient's skin has created a lot of a problem with partner or any close friends or relatives.">
+				>
+				["at0045"] = <
+					text = <"Very much">
+					description = <"The patient's skin has created very much of a problem with partner or any close friends or relatives.">
+				>
+				["at0046"] = <
+					text = <"Sexual difficulties">
+					description = <"Assessment of how much skin has caused sexual difficulties for patient.">
+					comment = <"Questionnaire question: How much has your skin caused any sexual difficulties?">
+				>
+				["at0047"] = <
+					text = <"Not at all or not relevant">
+					description = <"The patient's skin has not caused any sexual difficulties at all or the question is not relevant.">
+				>
+				["at0048"] = <
+					text = <"A little">
+					description = <"The patient's skin has caused a little sexual difficulties.">
+				>
+				["at0049"] = <
+					text = <"A lot">
+					description = <"The patient's skin has caused a lot of sexual difficulties.">
+				>
+				["at0050"] = <
+					text = <"Very much">
+					description = <"The patient's skin has caused very much sexual difficulties.">
+				>
+				["at0051"] = <
+					text = <"Problem caused by treatment">
+					description = <"Assessment of how much of a problem the treatment for skin has been for patient, for example by making home messy or taking up time.">
+					comment = <"Questionnaire question: How much of a problem has the treatment for your skin been, for example by making your home messy or by taking up time?">
+				>
+				["at0052"] = <
+					text = <"Not at all or not relevant">
+					description = <"Treatment has not at all been a problem or the question is not relevant.">
+				>
+				["at0053"] = <
+					text = <"A little">
+					description = <"Treatment has been a little problem.">
+				>
+				["at0054"] = <
+					text = <"A lot">
+					description = <"Treatment has been a lot of a problem.">
+				>
+				["at0055"] = <
+					text = <"Very much">
+					description = <"Treatment has been very much a problem.">
+				>
+				["at0056"] = <
+					text = <"Total score">
+					description = <"Total score from all individual scores.">
+				>
+				["at0057"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0058"] = <
+					text = <"Confounding factors">
+					description = <"Record any issues or factors that may impact on the assessment or the score.">
+				>
+				["at0059"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0060"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"e.g. Local hospital departmental infomation or additional metadata to align with HL7 or CDISC equivalents.">
+				>
+			>
+		>
+	>

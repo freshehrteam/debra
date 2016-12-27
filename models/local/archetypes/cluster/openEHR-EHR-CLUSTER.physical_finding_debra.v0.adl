@@ -1,0 +1,147 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.physical_finding_debra.v0
+
+concept
+	[at0000]	-- Physical finding DEBRA
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Hildegard Franke">
+		["email"] = <"hildi@freshehr.com">
+		["organisation"] = <"freshEHR Clinical Informatics Ltd.">
+		["date"] = <"2016-12-27">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For the recording of specific Epidermolysis Bullosa physical findings during an encounter.">
+			use = <"Use within the context of an Epidermolysis Bullosa encounter only to capture physical finding.">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
+		["licence"] = <"CC-BY-SA 3.0">
+		["MD5-CAM-1.0.1"] = <"4E8A1DAFD6F57143C9BE33B614F33A0D">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Physical finding DEBRA
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Type
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0002, 	-- Blisters
+							at0003, 	-- Erosions
+							at0004, 	-- Crusting
+							at0005, 	-- Wounds
+							at0006]	-- Infections
+						}
+					}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {	-- Size
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {	-- Frequency
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {	-- Location
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {	-- Inciting factor
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0011, 	-- Pressure
+							at0012, 	-- Heat
+							at0013, 	-- Trauma
+							at0014]	-- Other
+						}
+					}
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Physical finding DEBRA">
+					description = <"Local cluster to capture physical findings during EB encounter.">
+				>
+				["at0001"] = <
+					text = <"Type">
+					description = <"Description of the type of physical finding.">
+				>
+				["at0002"] = <
+					text = <"Blisters">
+					description = <"The type of physical findings is blisters.">
+				>
+				["at0003"] = <
+					text = <"Erosions">
+					description = <"The type of physical finding is erosions.">
+				>
+				["at0004"] = <
+					text = <"Crusting">
+					description = <"The type of physical finding is crusting.">
+				>
+				["at0005"] = <
+					text = <"Wounds">
+					description = <"The type of physical finding is wounds.">
+				>
+				["at0006"] = <
+					text = <"Infections">
+					description = <"The type of physical finding is infections.">
+				>
+				["at0007"] = <
+					text = <"Size">
+					description = <"The size of the physical finding.">
+				>
+				["at0008"] = <
+					text = <"Frequency">
+					description = <"The frequency of the physical finding.">
+				>
+				["at0009"] = <
+					text = <"Location">
+					description = <"The location of the physical finding.">
+				>
+				["at0010"] = <
+					text = <"Inciting factor">
+					description = <"Description of inciting factors for the physical finding.">
+				>
+				["at0011"] = <
+					text = <"Pressure">
+					description = <"The inciting factor is pressure.">
+				>
+				["at0012"] = <
+					text = <"Heat">
+					description = <"The inciting factor is heat.">
+				>
+				["at0013"] = <
+					text = <"Trauma">
+					description = <"The inciting factor is trauma">
+				>
+				["at0014"] = <
+					text = <"Other">
+					description = <"The inciting factor is other.">
+				>
+			>
+		>
+	>
