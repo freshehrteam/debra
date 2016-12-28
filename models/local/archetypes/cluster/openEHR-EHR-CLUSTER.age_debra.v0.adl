@@ -25,41 +25,23 @@ This cluster may be replaced in due course by a corresponding data point in the 
 			copyright = <"">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"NotSet">
 	other_contributors = <>
 	other_details = <
 		["licence"] = <"CC-BY-SA 3.0">
 		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
-		["MD5-CAM-1.0.1"] = <"CB810A4DD85F4F6CA35EBA191EB14269">
+		["MD5-CAM-1.0.1"] = <"414F91D3C87DCD4898C8F27DC98AE175">
 	>
 
 definition
 	CLUSTER[at0000] matches {	-- Age DEBRA
 		items cardinality matches {1..*; unordered} matches {
-			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Age as text
+			ELEMENT[at0001] occurrences matches {0..*} matches {	-- Age
 				value matches {
 					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0002] occurrences matches {0..1} matches {	-- Age as quantity
-				value matches {
-					C_DV_QUANTITY <
-						property = <[openehr::128]>
-						list = <
-							["1"] = <
-								units = <"a">
-							>
-							["2"] = <
-								units = <"mo">
-							>
-							["3"] = <
-								units = <"wk">
-							>
-							["4"] = <
-								units = <"d">
-							>
-						>
-					>
+					DV_DURATION matches {
+						value matches {PYMWD}
+					}
 				}
 			}
 		}
@@ -74,12 +56,8 @@ ontology
 					description = <"Description of age as a textual value.">
 				>
 				["at0001"] = <
-					text = <"Age as text">
+					text = <"Age">
 					description = <"Textual or coded description of age in a specific context, such as 'at onset' or 'at diagnosis'.">
-				>
-				["at0002"] = <
-					text = <"Age as quantity">
-					description = <"Numeric description of age in a specific context, such as 'at onset' or 'at diagnosis'.">
 				>
 			>
 		>

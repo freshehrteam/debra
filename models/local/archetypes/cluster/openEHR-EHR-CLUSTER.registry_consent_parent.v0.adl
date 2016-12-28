@@ -21,12 +21,12 @@ description
 			copyright = <"">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"NotSet">
 	other_contributors = <>
 	other_details = <
-		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
 		["licence"] = <"CC BY-SA 3.0">
-		["MD5-CAM-1.0.1"] = <"94BC6D70B66872EEBE659CAB4999EEA8">
+		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
+		["MD5-CAM-1.0.1"] = <"2591D3036BE1ED806A8C6391E5F19784">
 	>
 
 definition
@@ -67,6 +67,13 @@ definition
 					}
 				}
 			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {	-- Consent given by legal guardian
+				value matches {
+					DV_BOOLEAN matches {
+						value matches {True, False}
+					}
+				}
+			}
 		}
 	}
 
@@ -97,6 +104,11 @@ ontology
 				["at0005"] = <
 					text = <"Consent to store registry data">
 					description = <"The patient is consenting to store registry data.">
+				>
+				["at0006"] = <
+					text = <"Consent given by legal guardian">
+					description = <"Is the consent given by the patient's
+legal guardian?">
 				>
 			>
 		>

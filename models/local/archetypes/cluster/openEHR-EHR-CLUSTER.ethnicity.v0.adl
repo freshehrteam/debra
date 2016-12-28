@@ -21,14 +21,14 @@ description
 			copyright = <"">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"NotSet">
 	other_contributors = <>
 	other_details = <
 		["licence"] = <"CC BY-SA 3.0">
 		["references"] = <"http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=1
 ">
 		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
-		["MD5-CAM-1.0.1"] = <"B9D6A5EBE4BC6F0B8014DA490F544EE7">
+		["MD5-CAM-1.0.1"] = <"2CBBB74FDB87B00EE4ADA99C89FADF72">
 	>
 
 definition
@@ -59,6 +59,12 @@ definition
 							at0019]	-- 99: Not known
 						}
 					}
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0020] occurrences matches {0..1} matches {	-- Ancestral geographic origin
+				value matches {
+					DV_TEXT matches {*}
 				}
 			}
 		}
@@ -147,6 +153,10 @@ ontology
 				["at0019"] = <
 					text = <"99: Not known">
 					description = <"The subject's ethnic category is Not known.">
+				>
+				["at0020"] = <
+					text = <"Ancestral geographic origin">
+					description = <"The geographic region from which the patient's ancestors originated.">
 				>
 			>
 		>

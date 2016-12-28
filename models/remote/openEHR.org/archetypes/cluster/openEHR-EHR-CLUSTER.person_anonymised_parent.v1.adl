@@ -24,7 +24,7 @@ description
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"40489BEE51EEA71DB5B832FCC18F5A35">
+		["MD5-CAM-1.0.1"] = <"6BD6A42320A1DFE68D381F8A40C5FE15">
 	>
 
 definition
@@ -62,7 +62,8 @@ definition
 						defining_code matches {
 							[local::
 							at0004, 	-- Alive
-							at0005]	-- Dead
+							at0005, 	-- Dead
+							at0016]	-- Unknown
 						}
 					}
 				}
@@ -153,6 +154,10 @@ ontology
 				["at0015"] = <
 					text = <"Is fetus?">
 					description = <"Whether the information is recorded for a fetus.">
+				>
+				["at0016"] = <
+					text = <"Unknown">
+					description = <"The patient's vital status is not known.">
 				>
 			>
 		>

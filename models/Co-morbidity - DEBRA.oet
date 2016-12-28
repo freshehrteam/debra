@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="openEHR/v1/Template">
+  <id>bbc2ba83-9c51-4516-8456-2d6251f73608</id>
+  <name>Co-morbidity</name>
+  <definition xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" name="Co-morbidity">
+    <Item xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/items" name="Primary diagnosis">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1" concept_name="Problem/Diagnosis" path="/items">
+        <Rule path="/data[at0001]/items[at0002]" name="EB diagnosis name" />
+        <Rule path="/data[at0001]/items[at0009]" max="0" />
+        <Rule path="/data[at0001]/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0003]" name="Date of diagnosis" />
+        <Rule path="/data[at0001]/items[at0005]" max="0" />
+        <Rule path="/data[at0001]/items[at0072]" max="0" />
+        <Rule path="/data[at0001]/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0073]">
+          <constraint xsi:type="multipleConstraint">
+            <includedTypes>Coded_text</includedTypes>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0069]" max="0" />
+        <Rule path="/protocol[at0032]/items[at0070]" max="0" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.age_debra.v0" concept_name="Age DEBRA" path="/data[at0001]/items[at0043]" hide_on_form="true">
+          <Rule path="/items[at0001]" name="Age at onset text" />
+          <Rule path="/items[at0002]" name="Age at onset quantity">
+            <constraint xsi:type="quantityConstraint">
+              <excludedUnits>wk</excludedUnits>
+              <excludedUnits>d</excludedUnits>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.age_debra.v0" concept_name="Age DEBRA" max="1" path="/data[at0001]/items[at0043]" name="Age DEBRA #1" hide_on_form="true">
+          <Rule path="/items[at0001]" name="Age at diagnosis text" />
+          <Rule path="/items[at0002]" name="Age at diagnosis quantity">
+            <constraint xsi:type="quantityConstraint">
+              <excludedUnits>wk</excludedUnits>
+              <excludedUnits>d</excludedUnits>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" path="/data[at0001]/items[at0043]">
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0022]" name="Method used for current diagnosis" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" path="/data[at0001]/items[at0046]" hide_on_form="true">
+          <Rule path="/items[at0060]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0083]" max="0" />
+          <Rule path="/items[at0071]" max="0" />
+          <Rule path="/items[at0077]" max="0" />
+          <Rule path="/items[at0063]" max="0" />
+          <Rule path="/items[at0073]" max="0" />
+          <Rule path="/items[at0082]" max="1" default="Primary diagnosis" name="Episodic care status">
+            <constraint xsi:type="multipleConstraint">
+              <includedTypes>Text</includedTypes>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.healthcare_provider_parent.v1" concept_name="Healthcare provider (PARENT)" path="/protocol[at0032]/items[at0071]">
+          <Rule path="/items[at0001]" name="Hospital name" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1" concept_name="Address (ISA)" max="1" path="/items[at0003]" hide_on_form="true">
+            <Rule path="/items[at0001]" max="0" />
+            <Rule path="/items[at0002]" max="0" />
+            <Rule path="/items[at0003]" max="0" />
+            <Rule path="/items[at0004]" max="0" />
+            <Rule path="/items[at0011]" max="0" />
+            <Rule path="/items[at0005]" max="0" />
+            <Rule path="/items[at0006]" max="0" />
+            <Rule path="/items[at0007]" name="Region" />
+            <Rule path="/items[at0008]" name="Country" />
+            <Rule path="/items[at0009]" max="0" />
+            <Rule path="/items[at0010]" max="0" />
+          </Items>
+        </Items>
+      </Item>
+    </Item>
+    <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1" concept_name="Problem/Diagnosis" path="/items">
+      <Rule path="/data[at0001]/items[at0009]" max="0" />
+      <Rule path="/data[at0001]/items[at0012]" max="0" />
+      <Rule path="/data[at0001]/items[at0005]" max="0" />
+      <Rule path="/data[at0001]/items[at0072]" max="0" />
+      <Rule path="/data[at0001]/items[at0030]" max="0" />
+      <Rule path="/data[at0001]/items[at0073]" max="0" />
+      <Rule path="/data[at0001]/items[at0069]" max="0" />
+      <Rule path="/protocol[at0032]/items[at0070]" max="0" />
+      <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" path="/data[at0001]/items[at0046]" hide_on_form="true">
+        <Rule path="/items[at0004]" max="0" />
+        <Rule path="/items[at0060]" max="0" />
+        <Rule path="/items[at0003]" max="0" />
+        <Rule path="/items[at0083]" max="0" />
+        <Rule path="/items[at0001]" max="0" />
+        <Rule path="/items[at0071]" max="0" />
+        <Rule path="/items[at0077]" max="0" />
+        <Rule path="/items[at0063]" max="0" />
+        <Rule path="/items[at0073]" max="0" />
+        <Rule path="/items[at0082]" max="1" default="Co-morbidity" name="Episodic care status">
+          <constraint xsi:type="multipleConstraint">
+            <includedTypes>Text</includedTypes>
+          </constraint>
+        </Rule>
+      </Items>
+    </Item>
+  </definition>
+</template>

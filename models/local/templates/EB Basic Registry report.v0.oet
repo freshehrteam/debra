@@ -1,0 +1,710 @@
+<?xml version="1.0"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="openEHR/v1/Template">
+  <id>4915736c-6edf-491d-bf3d-2daa6984cdc0</id>
+  <name>EB Basic Registry report.v0</name>
+  <description>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <purpose>To handle basic EB (Epidermolysis bullosa) registry reporting. Aligned to EPIRARE/OSSE/EUCERD datasets</purpose>
+      <use />
+      <misuse />
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="COMPOSITION" archetype_id="openEHR-EHR-COMPOSITION.report.v1" concept_name="Report" name="EB Registry report">
+    <Content xsi:type="ADMIN_ENTRY" archetype_id="openEHR-EHR-ADMIN_ENTRY.registry_parent.v0" concept_name="Registry (PARENT)" max="1" path="/content" name="Registry details">
+      <Rule path="/data[at0001]" hide_on_form="true" />
+      <Rule path="/data[at0001]/items[at0005]" max="0" />
+      <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.person_identifiable_parent.v1" concept_name="Identifiable Person (PARENT)" max="1" path="/data[at0001]/items[at0008]" name="Patient details">
+        <Rule path="/items[at0001]" max="1" name="Registry idenifier" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.person_name_isa.v1" concept_name="Person name (ISA)" max="1" path="/items[at0002]" name="Person name">
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1" concept_name="Address (ISA)" max="1" path="/items[at0003]" name="Current residence">
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0011]" max="0" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" name="City of residence" />
+          <Rule path="/items[at0007]" max="0" />
+          <Rule path="/items[at0008]" name="Country of residence" />
+          <Rule path="/items[at0009]" max="0" />
+          <Rule path="/items[at0010]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1" concept_name="Address (ISA)" max="1" path="/items[at0004]" name="Birth address">
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0011]" max="0" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" name="City of birth" />
+          <Rule path="/items[at0007]" max="0" />
+          <Rule path="/items[at0008]" name="Country of birth" />
+          <Rule path="/items[at0009]" max="0" />
+          <Rule path="/items[at0010]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.person_anonymised_parent.v1" concept_name="Anonymised person (PARENT)" max="1" path="/items[at0009]" name="Anonymised details">
+          <Rule path="/items[at0008]" max="0" />
+          <Rule path="/items[at0013]" max="0" />
+          <Rule path="/items[at0014]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.ethnicity.v0" concept_name="Ethnicity" max="1" path="/items[at0009]" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.death_details_parent.v1" concept_name="Death details (PARENT)" max="1" path="/items[at0009]" name="Death details" />
+      </Items>
+      <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.healthcare_professional_parent.v1" concept_name="Healthcare professional (PARENT)" max="1" path="/data[at0001]/items[at0009]" name="Registering/referring clinician" hide_on_form="true">
+        <Rule path="/items[at0004]" max="1" name="Professional Contact details" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.person_name_isa.v1" concept_name="Person name (ISA)" max="1" path="/items[at0001]" name="Professional name">
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.healthcare_provider_parent.v1" concept_name="Healthcare provider (PARENT)" max="1" path="/items[at0003]" name="Registering/referring centre">
+          <Rule path="/items[at0001]" name="Centre name" />
+          <Rule path="/items[at0002]" name="Centre identifier" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+        </Items>
+      </Items>
+      <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.registry_consent_parent.v0" concept_name="Registry consent (PARENT)" max="1" path="/data[at0001]/items[at0004]" name="Consent" />
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Birth history">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.pregnancy_summary.v0" concept_name="Pregnancy Summary" max="1" path="/items" name="Birth summary">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/items[at0104]" max="0" />
+        <Rule path="/data[at0001]/items[at0105]" max="0" />
+        <Rule path="/data[at0001]/items[at0002]" max="0" />
+        <Rule path="/data[at0001]/items[at0138]" max="0" />
+        <Rule path="/data[at0001]/items[at0139]" max="0" />
+        <Rule path="/data[at0001]/items[at0140]" max="0" />
+        <Rule path="/data[at0001]/items[at0071]" max="0" />
+        <Rule path="/data[at0001]/items[at0006]" max="0" />
+        <Rule path="/data[at0001]/items[at0075]" max="0" />
+        <Rule path="/data[at0001]/items[at0128]" max="0" />
+        <Rule path="/data[at0001]/items[at0103]" max="0" />
+        <Rule path="/data[at0001]/items[at0094]" max="0" />
+        <Rule path="/data[at0001]/items[at0008]" max="0" />
+        <Rule path="/data[at0001]/items[at0096]" max="0" />
+        <Rule path="/data[at0001]/items[at0097]" max="0" />
+        <Rule path="/data[at0001]/items[at0022]" max="0" />
+        <Rule path="/data[at0001]/items[at0126]" max="0" />
+        <Rule path="/data[at0001]/items[at0013]" max="0" />
+        <Rule path="/data[at0001]/items[at0065]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]" max="1" name="Self" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0036]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0039]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0040]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0045]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0037]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0029]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0117]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0093]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0059]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0038]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0058]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0060]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0129]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0130]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0131]" max="0" />
+        <Rule path="/data[at0001]/items[at0028]/items[at0061]" max="0" />
+        <Rule path="/data[at0001]/items[at0015]" max="0" />
+        <Rule path="/data[at0001]/items[at0016]" max="0" />
+        <Rule path="/data[at0001]/items[at0118]" max="0" />
+        <Rule path="/data[at0001]/items[at0119]" max="0" />
+        <Rule path="/data[at0001]/items[at0109]" max="0" />
+        <Rule path="/data[at0001]/items[at0083]" max="0" />
+        <Rule path="/protocol[at0081]" hide_on_form="true" />
+        <Rule path="/protocol[at0081]/items[at0082]" max="0" />
+        <SubjectOfCare>
+          <includedValues>openehr::10</includedValues>
+        </SubjectOfCare>
+      </Item>
+      <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.height.v1" concept_name="Height/Length" max="1" path="/items">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/events[at0002]" max="1" name="Birth">
+          <eventConstraint>
+            <allowedType>PointInTime</allowedType>
+          </eventConstraint>
+        </Rule>
+        <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0018]" max="0" />
+        <Rule path="/data[at0001]/events[at0002]/state[at0013]" hide_on_form="true" />
+        <Rule path="/data[at0001]/events[at0002]/state[at0013]/items[at0014]" max="0" />
+        <Rule path="/data[at0001]/events[at0002]/state[at0013]/items[at0019]" max="0" />
+        <Rule path="/protocol[at0007]" hide_on_form="true" />
+      </Item>
+      <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.body_weight.v1" concept_name="Body weight" max="1" path="/items">
+        <Rule path="/data[at0002]/events[at0003]" max="1" name="Birth">
+          <eventConstraint>
+            <allowedType>PointInTime</allowedType>
+          </eventConstraint>
+        </Rule>
+        <Rule path="/data[at0002]/events[at0003]/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at0024]" max="0" />
+        <Rule path="/data[at0002]/events[at0003]/state[at0008]" hide_on_form="true" />
+        <Rule path="/data[at0002]/events[at0003]/state[at0008]/items[at0009]" max="0" />
+        <Rule path="/data[at0002]/events[at0003]/state[at0008]/items[at0025]" max="0" />
+        <Rule path="/protocol[at0015]" hide_on_form="true" />
+      </Item>
+      <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.head_circumference.v0" concept_name="Head circumference" max="1" path="/items">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/events[at0010]" max="0" />
+        <Rule path="/data[at0001]/events[at0011]/data[at0003]" hide_on_form="true" />
+        <Rule path="/data[at0001]/events[at0011]/data[at0003]/items[at0007]" max="0" />
+        <Rule path="/data[at0001]/events[at0011]/state[at0008]" hide_on_form="true" />
+        <Rule path="/data[at0001]/events[at0011]/state[at0008]/items[at0009]" max="0" />
+        <Rule path="/protocol[at0005]" hide_on_form="true" />
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Primary diagnosis">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1" concept_name="Problem/Diagnosis" max="1" path="/items" name="EB Diagnosis">
+        <Rule path="/data[at0001]/items[at0002]" name="Primary EB Diagnosis" />
+        <Rule path="/data[at0001]/items[at0009]" max="0" />
+        <Rule path="/data[at0001]/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0003]" name="Date of diagnosis" />
+        <Rule path="/data[at0001]/items[at0005]" max="0" />
+        <Rule path="/data[at0001]/items[at0072]" max="0" />
+        <Rule path="/data[at0001]/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0073]">
+          <constraint xsi:type="multipleConstraint">
+            <includedTypes>Coded_text</includedTypes>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0069]" max="0" />
+        <Rule path="/protocol[at0032]/items[at0070]" max="0" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.eb_diagnosis_debra.v0" concept_name="EB diagnosis" max="1" path="/data[at0001]/items[at0043]" name="EB diagnosis type" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.age_debra.v0" concept_name="Age DEBRA" max="1" path="/data[at0001]/items[at0043]" name="Age onset/diagnosis" hide_on_form="true">
+          <Rule path="/items[at0001]" max="1" name="Age at onset" />
+          <Rule path="/items[at0001]" max="1" clone="true" name="Age at diagnosis" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" max="1" path="/data[at0001]/items[at0043]" name="Electron Microscopy">
+          <Rule path="/items[at0003]" default="Electron microscopy" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0022]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" max="1" path="/data[at0001]/items[at0043]" name="Immunostaining">
+          <Rule path="/items[at0003]" default="Immunostaining" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0022]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" max="1" path="/data[at0001]/items[at0043]" name="Mutation analysis">
+          <Rule path="/items[at0003]" default="Mutation analysis" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0022]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" max="1" path="/data[at0001]/items[at0043]" name="Clinical features">
+          <Rule path="/items[at0003]" default="Clinical features" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0022]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" max="1" path="/data[at0001]/items[at0043]" name="Biological features">
+          <Rule path="/items[at0003]" default="Biological features" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0022]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0" concept_name="Clinical evidence" path="/data[at0001]/items[at0043]">
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" max="1" path="/data[at0001]/items[at0046]" hide_on_form="true">
+          <Rule path="/items[at0004]">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0017</excludedValues>
+              <excludedValues>local::at0088</excludedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0060]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0083]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0071]" max="0" />
+          <Rule path="/items[at0077]" max="0" />
+          <Rule path="/items[at0063]" default="local::at0064::Principal diagnosis" name="Episodic care status">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0066</excludedValues>
+              <excludedValues>local::at0076</excludedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0073]" max="0" />
+          <Rule path="/items[at0082]" max="1" name="Sporadic/ familial">
+            <constraint xsi:type="textConstraint">
+              <includedValues>SPO-sporadic</includedValues>
+              <includedValues>FAM-familial</includedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0082]" max="1" clone="true" name="OSSE diagnostic status">
+            <constraint xsi:type="textConstraint">
+              <includedValues>ONG-ongoing</includedValues>
+              <includedValues>LIK-likely</includedValues>
+              <includedValues>OK-confirmed</includedValues>
+              <includedValues>UNK-unknown</includedValues>
+              <includedValues>UNC-unclassifiable</includedValues>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.condition_status_fhir.v0" concept_name="Condition status" max="1" path="/data[at0001]/items[at0046]" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.healthcare_provider_parent.v1" concept_name="Healthcare provider (PARENT)" max="1" path="/protocol[at0032]/items[at0071]">
+          <Rule path="/items[at0001]" name="Hospital name" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1" concept_name="Address (ISA)" max="1" path="/items[at0003]" name="Organisation address" hide_on_form="true">
+            <Rule path="/items[at0001]" max="0" />
+            <Rule path="/items[at0002]" max="0" />
+            <Rule path="/items[at0003]" max="0" />
+            <Rule path="/items[at0004]" max="0" />
+            <Rule path="/items[at0011]" max="0" />
+            <Rule path="/items[at0005]" max="0" />
+            <Rule path="/items[at0006]" max="0" />
+            <Rule path="/items[at0007]" name="Region" />
+            <Rule path="/items[at0008]" name="Country" />
+            <Rule path="/items[at0009]" max="0" />
+            <Rule path="/items[at0010]" max="0" />
+          </Items>
+        </Items>
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Co-morbidity">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1" concept_name="Problem/Diagnosis" path="/items">
+        <Rule path="/data[at0001]/items[at0002]" name="Co-morbidity" />
+        <Rule path="/data[at0001]/items[at0009]" max="0" />
+        <Rule path="/data[at0001]/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0005]" max="0" />
+        <Rule path="/data[at0001]/items[at0072]" max="0" />
+        <Rule path="/data[at0001]/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0073]" max="0" />
+        <Rule path="/data[at0001]/items[at0069]" max="0" />
+        <Rule path="/protocol[at0032]/items[at0070]" max="0" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" max="1" path="/data[at0001]/items[at0046]" hide_on_form="true">
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0060]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0083]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0071]" max="0" />
+          <Rule path="/items[at0077]" max="0" />
+          <Rule path="/items[at0063]" default="local::at0066::Secondary diagnosis">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0064</excludedValues>
+              <excludedValues>local::at0076</excludedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0073]" max="0" />
+          <Rule path="/items[at0082]" max="1" default="Co-morbidity" name="Episodic care status">
+            <constraint xsi:type="multipleConstraint">
+              <includedTypes>Text</includedTypes>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.condition_status_fhir.v0" concept_name="Condition status" max="1" path="/data[at0001]/items[at0046]" />
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Primary procedure">
+      <Item xsi:type="ACTION" archetype_id="openEHR-EHR-ACTION.procedure.v1" concept_name="Procedure" path="/items">
+        <Rule path="/description[at0001]" hide_on_form="true" />
+        <Rule path="/description[at0001]/items[at0002]" name="Primary procedure" />
+        <Rule path="/description[at0001]/items[at0049]" max="0" />
+        <Rule path="/description[at0001]/items[at0065]" max="0" />
+        <Rule path="/description[at0001]/items[at0058]" max="0" />
+        <Rule path="/description[at0001]/items[at0063]" max="0" />
+        <Rule path="/description[at0001]/items[at0048]" max="0" />
+        <Rule path="/description[at0001]/items[at0006]" max="0" />
+        <Rule path="/description[at0001]/items[at0066]" max="0" />
+        <Rule path="/description[at0001]/items[at0060]" max="0" />
+        <Rule path="/description[at0001]/items[at0061]" max="0" />
+        <Rule path="/description[at0001]/items[at0067]" max="0" />
+        <Rule path="/description[at0001]/items[at0014]" max="1" name="Indication" />
+        <Rule path="/description[at0001]/items[at0005]" max="0" />
+        <Rule path="/protocol[at0053]" hide_on_form="true" />
+        <Rule path="/protocol[at0053]/items[at0054]" max="0" />
+        <Rule path="/protocol[at0053]/items[at0056]" max="0" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.healthcare_provider_parent.v1" concept_name="Healthcare provider (PARENT)" max="1" path="/protocol[at0053]/items[at0057]" name="Responsible provider" hide_on_form="true">
+          <Rule path="/items[at0001]" name="Hospital Name" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0004]" max="0" />
+          <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1" concept_name="Address (ISA)" max="1" path="/items[at0003]" name="Organisation address" hide_on_form="true">
+            <Rule path="/items[at0001]" max="0" />
+            <Rule path="/items[at0002]" max="0" />
+            <Rule path="/items[at0003]" max="0" />
+            <Rule path="/items[at0004]" max="0" />
+            <Rule path="/items[at0011]" max="0" />
+            <Rule path="/items[at0005]" max="0" />
+            <Rule path="/items[at0006]" max="0" />
+            <Rule path="/items[at0007]" name="Region" />
+            <Rule path="/items[at0008]" name="Country" />
+            <Rule path="/items[at0009]" max="0" />
+            <Rule path="/items[at0010]" max="0" />
+          </Items>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" max="1" path="/protocol[at0053]/items[at0064]" name="Procedure status" hide_on_form="true">
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0060]" default="local::at0062::Current">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0061</excludedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0083]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0071]" max="0" />
+          <Rule path="/items[at0077]" max="0" />
+          <Rule path="/items[at0063]" max="0" />
+          <Rule path="/items[at0073]" max="0" />
+          <Rule path="/items[at0082]" max="0" />
+        </Items>
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Relevant past surgical procedures">
+      <Item xsi:type="ACTION" archetype_id="openEHR-EHR-ACTION.procedure.v1" concept_name="Procedure" path="/items">
+        <Rule path="/description[at0001]" hide_on_form="true" />
+        <Rule path="/description[at0001]/items[at0002]" name="Past procedure" />
+        <Rule path="/description[at0001]/items[at0049]" max="0" />
+        <Rule path="/description[at0001]/items[at0065]" max="0" />
+        <Rule path="/description[at0001]/items[at0058]" max="0" />
+        <Rule path="/description[at0001]/items[at0063]" max="0" />
+        <Rule path="/description[at0001]/items[at0048]" max="0" />
+        <Rule path="/description[at0001]/items[at0006]" max="0" />
+        <Rule path="/description[at0001]/items[at0066]" max="0" />
+        <Rule path="/description[at0001]/items[at0060]" max="0" />
+        <Rule path="/description[at0001]/items[at0061]" max="0" />
+        <Rule path="/description[at0001]/items[at0067]" max="0" />
+        <Rule path="/description[at0001]/items[at0014]" max="1" name="Indication" />
+        <Rule path="/description[at0001]/items[at0005]" max="0" />
+        <Rule path="/protocol[at0053]" hide_on_form="true" />
+        <Rule path="/protocol[at0053]/items[at0054]" max="0" />
+        <Rule path="/protocol[at0053]/items[at0056]" max="0" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.healthcare_provider_parent.v1" concept_name="Healthcare provider (PARENT)" max="1" path="/protocol[at0053]/items[at0057]" name="Responsible provider">
+          <Rule path="/items[at0001]" name="Hospital Name" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0004]" max="0" />
+          <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1" concept_name="Address (ISA)" max="1" path="/items[at0003]" name="Organisation address" hide_on_form="true">
+            <Rule path="/items[at0001]" max="0" />
+            <Rule path="/items[at0002]" max="0" />
+            <Rule path="/items[at0003]" max="0" />
+            <Rule path="/items[at0004]" max="0" />
+            <Rule path="/items[at0011]" max="0" />
+            <Rule path="/items[at0005]" max="0" />
+            <Rule path="/items[at0006]" max="0" />
+            <Rule path="/items[at0007]" name="Region" />
+            <Rule path="/items[at0008]" name="Country" />
+            <Rule path="/items[at0009]" max="0" />
+            <Rule path="/items[at0010]" max="0" />
+          </Items>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" max="1" path="/protocol[at0053]/items[at0064]" name="Procedure status" hide_on_form="true">
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0060]" default="local::at0061::Past">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0062</excludedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0083]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0071]" max="0" />
+          <Rule path="/items[at0077]" max="0" />
+          <Rule path="/items[at0063]" max="0" />
+          <Rule path="/items[at0073]" max="0" />
+          <Rule path="/items[at0082]" max="0" />
+        </Items>
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Current medications">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.clinical_synopsis.v1" concept_name="Clinical Synopsis" max="1" path="/items" name="Current treatment summary" hide_on_form="true">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/items[at0002]" name="Current drug treatment" />
+      </Item>
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.clinical_synopsis.v1" concept_name="Clinical Synopsis" max="1" path="/items" name="Orphan drug treatment summary" hide_on_form="true">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/items[at0002]" name="Current orphan drug treatment" />
+      </Item>
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.clinical_synopsis.v1" concept_name="Clinical Synopsis" max="1" path="/items" name="Off-label drug treatment summary" hide_on_form="true">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/items[at0002]" name="Current off-label drug treatment" />
+      </Item>
+      <Item xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/items" name="Specific medications">
+        <Item xsi:type="INSTRUCTION" archetype_id="openEHR-EHR-INSTRUCTION.medication_order.v0" concept_name="Medication order" path="/items">
+          <Rule path="/activities[at0001]/description[at0002]" hide_on_form="true" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0070]" name="Local medicinal product brand" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0091]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0092]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0009]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0047]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0109]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0055]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0135]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0056]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0062]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0044]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0105]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0107]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0018]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0148]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0113]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0129]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0133]" max="0" />
+          <Rule path="/activities[at0001]/description[at0002]/items[at0167]" max="0" />
+          <Rule path="/protocol[at0005]" hide_on_form="true" />
+          <Rule path="/protocol[at0005]/items[at0004]" max="0" />
+          <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.medication_substance.v0" concept_name="Medication substance" max="1" path="/activities[at0001]/description[at0002]/items[at0143]" name="Active ingredient" hide_on_form="true">
+            <Rule path="/items[at0071]" max="0" />
+            <Rule path="/items[at0142]" max="0" />
+            <Rule path="/items[at0117]" max="0" />
+            <Rule path="/items[at0126]" max="0" />
+            <Rule path="/items[at0133]" name="Special status">
+              <constraint xsi:type="textConstraint">
+                <includedValues>Off-label</includedValues>
+                <includedValues>Orphan</includedValues>
+                <includedValues>Trial use</includedValues>
+              </constraint>
+            </Rule>
+          </Items>
+        </Item>
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Current assistive devices">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.device_summary.v0" concept_name="Device summary" path="/items">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/items[at0002]" default="local::at0004::Current" hide_on_form="true">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0003</excludedValues>
+            <excludedValues>local::at0005</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0015]" max="0" />
+        <Rule path="/data[at0001]/items[at0022]" max="1" />
+        <Rule path="/data[at0001]/items[at0022]/items[at0007]" max="0" />
+        <Rule path="/data[at0001]/items[at0022]/items[at0008]" max="0" />
+        <Rule path="/data[at0001]/items[at0022]/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0022]/items[at0014]" max="0" />
+        <Rule path="/protocol[at0016]/items[at0017]" max="0" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.device.v1" concept_name="Medical Device" path="/data[at0001]/items[at0022]/items[at0010]">
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0005]" max="0" />
+          <Rule path="/items[at0020]" max="0" />
+          <Rule path="/items[at0022]" max="0" />
+          <Rule path="/items[at0023]" max="0" />
+          <Rule path="/items[at0006]" max="0" />
+          <Rule path="/items[at0025]" max="0" />
+          <Rule path="/items[at0007]" max="0" />
+          <Rule path="/items[at0024]" max="0" />
+        </Items>
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Other treatments">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.clinical_synopsis.v1" concept_name="Clinical Synopsis" max="1" path="/items" name="Treatments summary" hide_on_form="true">
+        <Rule path="/data[at0001]" hide_on_form="true" />
+        <Rule path="/data[at0001]/items[at0002]" name="Description of treatments" />
+      </Item>
+      <Item xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/items" name="Specific treatments">
+        <Item xsi:type="ACTION" archetype_id="openEHR-EHR-ACTION.procedure.v1" concept_name="Procedure" path="/items">
+          <Rule path="/description[at0001]" hide_on_form="true" />
+          <Rule path="/description[at0001]/items[at0002]" name="Other treatment" />
+          <Rule path="/description[at0001]/items[at0058]" max="0" />
+          <Rule path="/description[at0001]/items[at0063]" max="0" />
+          <Rule path="/description[at0001]/items[at0048]" max="0" />
+          <Rule path="/description[at0001]/items[at0006]" max="0" />
+          <Rule path="/description[at0001]/items[at0066]" max="0" />
+          <Rule path="/description[at0001]/items[at0060]" max="0" />
+          <Rule path="/description[at0001]/items[at0061]" max="0" />
+          <Rule path="/description[at0001]/items[at0014]" max="0" />
+          <Rule path="/description[at0001]/items[at0005]" max="0" />
+          <Rule path="/protocol[at0053]" hide_on_form="true" />
+          <Rule path="/protocol[at0053]/items[at0054]" max="0" />
+          <Rule path="/protocol[at0053]/items[at0056]" max="0" />
+          <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0" concept_name="Problem/Diagnosis status" max="1" path="/protocol[at0053]/items[at0064]" name="Treatment status" hide_on_form="true">
+            <Rule path="/items[at0004]" max="0" />
+            <Rule path="/items[at0003]" max="0" />
+            <Rule path="/items[at0083]" max="0" />
+            <Rule path="/items[at0001]" max="0" />
+            <Rule path="/items[at0071]" max="0" />
+            <Rule path="/items[at0077]" max="0" />
+            <Rule path="/items[at0063]" max="0" />
+            <Rule path="/items[at0073]" max="0" />
+            <Rule path="/items[at0082]" max="0" />
+          </Items>
+        </Item>
+      </Item>
+    </Content>
+    <Context>
+      <Rule path="/context/other_context[at0001]" hide_on_form="true" />
+      <Rule path="/context/other_context[at0001]/items[at0002]" max="0" />
+      <Rule path="/context/other_context[at0001]/items[at0005]" max="0" />
+      <hide_on_form>true</hide_on_form>
+    </Context>
+  </definition>
+  <view>
+    <constraints path="[openEHR-EHR-COMPOSITION.report.v1]/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Primary procedure']/items[openEHR-EHR-ACTION.procedure.v1]/time">
+      <items id="VisibleInView">
+        <value>date of primary operation</value>
+      </items>
+    </constraints>
+    <constraints path="[openEHR-EHR-COMPOSITION.report.v1]/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Relevant past surgical procedures']/items[openEHR-EHR-ACTION.procedure.v1]/time">
+      <items id="VisibleInView">
+        <value>Date of past procedure</value>
+      </items>
+    </constraints>
+    <constraints path="[openEHR-EHR-COMPOSITION.report.v1]/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='Other treatments']/items[openEHR-EHR-ACTION.procedure.v1]/time">
+      <items id="VisibleInView">
+        <value>Date treatment administered</value>
+      </items>
+    </constraints>
+  </view>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-COMPOSITION.report.v1">
+    <digest id="MD5-CAM-1.0.1">FD053BE0456D849CACD864F274EED32E</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-ADMIN_ENTRY.registry_parent.v0">
+    <digest id="MD5-CAM-1.0.1">A80F4CECF1EF7119F0C23A3008E92C3E</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.person_identifiable_parent.v1">
+    <digest id="MD5-CAM-1.0.1">44C831CF11C3BB6A501B53726A545993</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.person_name_isa.v1">
+    <digest id="MD5-CAM-1.0.1">05B27C76383002F3959B99CEEF20E1BA</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.address_isa.v1">
+    <digest id="MD5-CAM-1.0.1">B57E4A1B668AA091230C201E1BE46884</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.person_anonymised_parent.v1">
+    <digest id="MD5-CAM-1.0.1">6BD6A42320A1DFE68D381F8A40C5FE15</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.ethnicity.v0">
+    <digest id="MD5-CAM-1.0.1">2CBBB74FDB87B00EE4ADA99C89FADF72</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.death_details_parent.v1">
+    <digest id="MD5-CAM-1.0.1">BB015AB1339D0A00FEBE87CA2BEEAE03</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.healthcare_professional_parent.v1">
+    <digest id="MD5-CAM-1.0.1">27AA4FECE054607F867F11C8498CD34F</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.healthcare_provider_parent.v1">
+    <digest id="MD5-CAM-1.0.1">DABDB6247145103B067D2DAF31B22D5E</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.registry_consent_parent.v0">
+    <digest id="MD5-CAM-1.0.1">2591D3036BE1ED806A8C6391E5F19784</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-SECTION.adhoc.v1">
+    <digest id="MD5-CAM-1.0.1">833221C23E2B25AD3CB9B0B78EE33740</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.pregnancy_summary.v0">
+    <digest id="MD5-CAM-1.0.1">B867868D25D6DDC3799773A568AA5C8E</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-OBSERVATION.height.v1">
+    <digest id="MD5-CAM-1.0.1">A4240F6ED2E696597510DB5385D3E4B4</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-OBSERVATION.body_weight.v1">
+    <digest id="MD5-CAM-1.0.1">00796FC78634E1F9B128CBDEE62B825D</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-OBSERVATION.head_circumference.v0">
+    <digest id="MD5-CAM-1.0.1">000B7C026BEECD34BAE0B28C3895F370</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+    <digest id="MD5-CAM-1.0.1">6110E221A71B0A223ACDF7184471D1C8</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.eb_diagnosis_debra.v0">
+    <digest id="MD5-CAM-1.0.1">1E741B7C2482FD93777AD01744025E7F</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.age_debra.v0">
+    <digest id="MD5-CAM-1.0.1">414F91D3C87DCD4898C8F27DC98AE175</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.clinical_evidence.v0">
+    <digest id="MD5-CAM-1.0.1">77228F85DA063A04634BCBFEA41522A6</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.problem_status.v0">
+    <digest id="MD5-CAM-1.0.1">CF200635C776241B3789FB27E8DDE884</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.condition_status_fhir.v0">
+    <digest id="MD5-CAM-1.0.1">A57A5483CAA5F35E7E64CE6680DA14F4</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-ACTION.procedure.v1">
+    <digest id="MD5-CAM-1.0.1">E0355FF9C044E77B4506BA522AC80967</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.clinical_synopsis.v1">
+    <digest id="MD5-CAM-1.0.1">2D066E7C501C2DAEC625DEE2ECD81DF4</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-INSTRUCTION.medication_order.v0">
+    <digest id="MD5-CAM-1.0.1">19D1E1493016506BDD01007D007C650E</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.medication_substance.v0">
+    <digest id="MD5-CAM-1.0.1">48E7562836049F5F865845C7456F08D4</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.device_summary.v0">
+    <digest id="MD5-CAM-1.0.1">204A711CC669A7AE669C0A3298BAA63E</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.device.v1">
+    <digest id="MD5-CAM-1.0.1">F09649C839F331ADA3FA32CD0F42B5A5</digest>
+  </integrity_checks>
+</template>

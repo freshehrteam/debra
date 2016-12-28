@@ -21,12 +21,12 @@ description
 			copyright = <"">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"NotSet">
 	other_contributors = <>
 	other_details = <
-		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
 		["licence"] = <"CC BY-SA 3.0">
-		["MD5-CAM-1.0.1"] = <"DBC52D6723A70CF48A8EBEDA32DDE704">
+		["current_contact"] = <"Hildegard Franke, freshEHR Clinical Informatics Ltd.<hildi@freshehr.com>">
+		["MD5-CAM-1.0.1"] = <"A80F4CECF1EF7119F0C23A3008E92C3E">
 	>
 
 definition
@@ -39,10 +39,28 @@ definition
 							DV_TEXT matches {*}
 						}
 					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Referral source
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
 					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Date registered
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Date data collection started
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0008] occurrences matches {0..1} matches {	-- Patient details
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype CLUSTER[at0009] occurrences matches {0..*} matches {	-- Healthcare provider details
+						include
+							archetype_id/value matches {/.*/}
 					}
 					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {	-- Patient consent preferences
 						include
@@ -76,6 +94,22 @@ ontology
 				["at0004"] = <
 					text = <"Patient consent preferences">
 					description = <"Slot for the capture of patient consent preferences.">
+				>
+				["at0005"] = <
+					text = <"Date data collection started">
+					description = <"The date at which data collection began.">
+				>
+				["at0007"] = <
+					text = <"Referral source">
+					description = <"From where did the referral originate?">
+				>
+				["at0008"] = <
+					text = <"Patient details">
+					description = <"Demographic details of the patient.">
+				>
+				["at0009"] = <
+					text = <"Healthcare provider details">
+					description = <"Details of the heathcare provider responsible for the registry record.">
 				>
 			>
 		>
