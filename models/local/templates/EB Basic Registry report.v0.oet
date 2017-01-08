@@ -211,6 +211,9 @@
         <Rule path="/protocol[at0005]" hide_on_form="true" />
       </Item>
     </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Family history">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.rd_family_history.v0" concept_name="Rare disease family history" path="/items" />
+    </Content>
     <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Primary diagnosis">
       <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1" concept_name="Problem/Diagnosis" max="1" path="/items" name="EB Diagnosis">
         <Rule path="/data[at0001]/items[at0002]" name="Primary EB Diagnosis" />
@@ -670,6 +673,9 @@
   </integrity_checks>
   <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-OBSERVATION.head_circumference.v0">
     <digest id="MD5-CAM-1.0.1">000B7C026BEECD34BAE0B28C3895F370</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.rd_family_history.v0">
+    <digest id="MD5-CAM-1.0.1">A538D1CA89BA73D9D7F9D188809B9BA1</digest>
   </integrity_checks>
   <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
     <digest id="MD5-CAM-1.0.1">6110E221A71B0A223ACDF7184471D1C8</digest>
