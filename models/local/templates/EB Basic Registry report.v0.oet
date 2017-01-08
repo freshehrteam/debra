@@ -642,7 +642,7 @@
     <digest id="MD5-CAM-1.0.1">6BD6A42320A1DFE68D381F8A40C5FE15</digest>
   </integrity_checks>
   <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.ethnicity.v0">
-    <digest id="MD5-CAM-1.0.1">2CBBB74FDB87B00EE4ADA99C89FADF72</digest>
+    <digest id="MD5-CAM-1.0.1">EDEE6CE33D820F61DB5EB1F19DFEDA4E</digest>
   </integrity_checks>
   <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.death_details_parent.v1">
     <digest id="MD5-CAM-1.0.1">BB015AB1339D0A00FEBE87CA2BEEAE03</digest>
